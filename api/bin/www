@@ -1,0 +1,15 @@
+const webHttpRunner = require('./runners/webHttp')
+const dbRunner = require('./runners/db')
+
+const init = async () => {
+    try {
+        await webHttpRunner()
+        await dbRunner()
+        console.log('\x1b[42m\x1b[30m ====> Ready to work <==== \x1b[0m');
+    } catch (err) {
+        console.log('\x1b[41m Run is failed \x1b[0m', err);
+        setTimeout(() => process.exit(1), 15000);
+    }
+}
+
+init()
