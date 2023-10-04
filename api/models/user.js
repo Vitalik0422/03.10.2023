@@ -19,7 +19,11 @@ const findOneUser = async (email) => {
     return response;
 }
 const findUser = async (user) => {
-    await user.save()
+    
+}
+
+const findById = async(userId) => {
+    const response = await model.findById(userId)
 }
 
 module.exports = {

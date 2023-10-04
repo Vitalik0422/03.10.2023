@@ -14,7 +14,7 @@ const RegUser = async (user, refreshToken) => {
     console.log(user, refreshToken);
     const response = await model.create({user:user , refreshToken: refreshToken})
 }
-const findOneUser = async (user) => {
+const findOneToken = async (user) => {
     const response = await model.findOne({user: user})
     return response;
 }
@@ -31,7 +31,7 @@ const deleteOne = async (refreshToken) => {
 
 module.exports = {
     RegUser,
-    findOneUser,
+    findOneToken,
     updateOne,
     deleteOne
 }

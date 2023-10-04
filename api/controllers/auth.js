@@ -35,9 +35,23 @@ const logout =  async (refreshToken) => {
     return token
 }
 
+const refresh = async (refreshToken) => {
+     if(!refreshToken){
+        return 402
+     }
+    const userData = await tokenServices.validateRefreshToken(refreshToken);
+    const tokenInDB = await tokenServices.findToken(refreshToken);
+    if(!userData || ! tokenInDB){
+        return 402
+    }
+    const user = await userModel.findById(userData.id)
+    const tokens = await tokenServices.saveToken({userId: user._id, email: user.email})
+    return {...tokens, user}
+}
 
 module.exports = {
     registration,
     login,
-    logout
+    logout,
+    refresh
 }

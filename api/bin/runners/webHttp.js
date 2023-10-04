@@ -3,7 +3,7 @@ const init = () => new Promise((resolve, reject) => {
     var app = require('../../server/app');
     var debug = require('debug')('front:server');
     var http = require('http');
-    var port = normalizePort(process.env.PORT || '3000');
+    var port = normalizePort(process.env.PORT || '5000');
     app.set('port', port);
 
     /**
