@@ -10,12 +10,11 @@ router.post('/registration', async(req, res, next)=> {
         res.json('Такий користувач існує')
         return
     }
+    res.cookie('refreshToken', response.tokens.refreshToken, {maxAge: 30* 24 * 60 * 60 * 1000, httpOnly: true})
     console.log(response);
-    //res.cookie('refreshToken', response.tokens.refreshToken, {maxAge: 30* 24 * 60 * 60 * 1000, httpOnly: true})
     res.json(response)
 })
 router.post('/login', async (req, res, next) => {
-    console.log(req.body);
     const {email, password} = req.body
     const response = await authCtrl.login(email, password)
     if(response === 501){

@@ -10,9 +10,9 @@ const generalSchema = new Schema({
 const modelName = path.basename(__filename, '.js')
 const model = mongoose.model(modelName, generalSchema);
 
-const RegUser = async (email, password) => {
-    const response = await model.create(email,password)
-    return response;
+const RegUser = async (_email, password) => {
+    const {email} = await model.create(_email,password)
+    return email;
 }
 const findOneUser = async (email) => {
     const response = await model.findOne({email: email})

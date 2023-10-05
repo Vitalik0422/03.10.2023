@@ -9,6 +9,8 @@ const layout = () => {
     </main>
     <footer>
         <NavLink to='/login'>LOGIN</NavLink>
+        <br />
+        <NavLink to='/registration'>REG</NavLink>
     </footer>
     </>
   )

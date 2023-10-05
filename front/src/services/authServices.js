@@ -1,19 +1,19 @@
 import instance from "../apiQuery/instance"
 import {userAuth} from '../slicer/authSlice'
 
-const registration = (email, password) =>async dispatch => {
-    const {data} = instance.post('/registration', {email,password})
+const registration = (dispatch) =>  async (email, password) => {
+    const {data} = await instance.post('/registration', {email,password})
     console.log(data);
     dispatch(userAuth(data.user));
-    localStorage.setItem('token', data.token);
+    localStorage.setItem('token', data.tokens);
 }
 
  const login = (dispatch) =>  async (email, password) => {
     console.log('work');
     const {data} =  await instance.post('/login', {email,password})
     console.log(data);
-    dispatch(userAuth(data.user));
-    localStorage.setItem('token', data.token);
+    dispatch(userAuth(data.user.email));
+    localStorage.setItem('token', data.tokens);
   };
 
 const logout = async () => {

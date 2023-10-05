@@ -11,8 +11,8 @@ const modelName = path.basename(__filename, '.js')
 const model = mongoose.model(modelName, generalSchema);
 
 const RegUser = async (user, refreshToken) => {
-    console.log(user, refreshToken);
     const response = await model.create({user:user , refreshToken: refreshToken})
+    return response
 }
 const findOneToken = async (user) => {
     const response = await model.findOne({user: user})
