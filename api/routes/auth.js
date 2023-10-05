@@ -15,6 +15,7 @@ router.post('/registration', async(req, res, next)=> {
     res.json(response)
 })
 router.post('/login', async (req, res, next) => {
+    console.log(req.body);
     const {email, password} = req.body
     const response = await authCtrl.login(email, password)
     if(response === 501){
